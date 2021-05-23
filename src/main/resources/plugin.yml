@@ -1,0 +1,5 @@
+name: NameTagAPI
+version: ${git.commit.id.abbrev}
+author: AgentRKID
+main: io.github.agentrkid.nametag.NameTagAPI
+depend: [ProtocolLib]
