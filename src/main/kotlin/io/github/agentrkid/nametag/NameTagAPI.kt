@@ -106,6 +106,11 @@ class NameTagAPI : JavaPlugin(), Listener {
         val refreshFor = update.refreshFor
         val toRefresh = update.toRefresh
         val nameTag = update.nameTag
+        
+        if (nameTag.prefix.length() > 16 || nameTag.suffix.length() > 16) {
+            logger.warning("Prefix or suffix can't be longer then 16 chars.")
+            return
+        }
 
         var teams = cachedTeams[refreshFor.uniqueId]
 
@@ -135,7 +140,7 @@ class NameTagAPI : JavaPlugin(), Listener {
     private fun createTeam(player: Player, team: String, playerName: String) {
         val createTeamPacket = PacketContainer(PacketType.Play.Server.SCOREBOARD_TEAM)
 
-        // Check out line 124-125
+        // Check out line 129-130
         createTeamPacket.strings.write(0, team)
         createTeamPacket.strings.write(1, team)
 
